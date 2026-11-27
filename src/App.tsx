@@ -48,80 +48,9 @@ type Expense = {
   splitMode: "equal" | "custom";
 };
 
-const initialGroups: Group[] = [
-  {
-    id: 1,
-    name: "Goa Trip",
-    memberNames: ["Chinmay", "Aarav", "Riya", "Aditya", "Ishita"],
-    icon: Plane,
-    color: "purple",
-  },
-  {
-    id: 2,
-    name: "Flatmates",
-    memberNames: ["Chinmay", "Aarav", "Riya"],
-    icon: Home,
-    color: "blue",
-  },
-  {
-    id: 3,
-    name: "Dinner Club",
-    memberNames: ["Chinmay", "Riya", "Aditya", "Ishita"],
-    icon: Utensils,
-    color: "orange",
-  },
-];
+const initialGroups: Group[] = [];
 
-const initialExpenses: Expense[] = [
-  {
-    id: 1,
-    title: "Hotel booking",
-    group: "Goa Trip",
-    date: "Today",
-    amount: 4500,
-    icon: ReceiptText,
-    payments: [{ name: "Chinmay", amount: 4500 }],
-    shares: [
-      { name: "Chinmay", amount: 900 },
-      { name: "Aarav", amount: 900 },
-      { name: "Riya", amount: 900 },
-      { name: "Aditya", amount: 900 },
-      { name: "Ishita", amount: 900 },
-    ],
-    splitMode: "equal",
-  },
-  {
-    id: 2,
-    title: "Grocery shopping",
-    group: "Flatmates",
-    date: "Yesterday",
-    amount: 1250,
-    icon: ReceiptText,
-    payments: [{ name: "Chinmay", amount: 1250 }],
-    shares: [
-      { name: "Chinmay", amount: 416.67 },
-      { name: "Aarav", amount: 416.67 },
-      { name: "Riya", amount: 416.66 },
-    ],
-    splitMode: "equal",
-  },
-  {
-    id: 3,
-    title: "Restaurant bill",
-    group: "Dinner Club",
-    date: "2 days ago",
-    amount: 1800,
-    icon: Utensils,
-    payments: [{ name: "Riya", amount: 1800 }],
-    shares: [
-      { name: "Chinmay", amount: 450 },
-      { name: "Riya", amount: 450 },
-      { name: "Aditya", amount: 450 },
-      { name: "Ishita", amount: 450 },
-    ],
-    splitMode: "equal",
-  },
-];
+const initialExpenses: Expense[] = [];
 
 function formatCurrency(amount: number) {
   return `₹${amount.toLocaleString("en-IN", {
@@ -132,8 +61,8 @@ function formatCurrency(amount: number) {
 
 // ================= DATA PERSISTENCE =================
 
-const GROUPS_STORAGE_KEY = "splitsmart_groups";
-const EXPENSES_STORAGE_KEY = "splitsmart_expenses";
+const GROUPS_STORAGE_KEY = "splitsmart_groups_v2";
+const EXPENSES_STORAGE_KEY = "splitsmart_expenses_v2";
 
 function getIconName(icon: LucideIcon): string {
   if (icon === Plane) return "Plane";
@@ -501,7 +430,7 @@ function App() {
             <section className="welcome-section">
               <div>
                 <p className="eyebrow">OVERVIEW</p>
-                <h1>Good evening, Chinmay!</h1>
+                <h1>Good evening!</h1>
                 <p className="subtitle">
                   Here's what's happening with your shared expenses.
                 </p>
